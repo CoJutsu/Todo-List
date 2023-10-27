@@ -190,7 +190,7 @@ function makeTaskElement(taskInputValue: string, taskCount: number): void {
 
 addTaskBtn.addEventListener("click", (event: MouseEvent): void => {
   event.preventDefault();
-  const taskInputValue: string = taskInput.value;
+  const taskInputValue: string = taskInput.value.trim();
   tasksCount++;
   updateTaskCounter();
 
