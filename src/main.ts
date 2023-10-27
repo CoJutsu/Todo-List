@@ -10,12 +10,14 @@ let tasksCount: number = 0;
 let tasksCompleted: number = 0;
 
 function updateTaskCounter(): void {
-  const inProgress = document.querySelector("#inProgress")!;
+  const inProgress = document.querySelector("#inProgress")! as HTMLSpanElement;
   inProgress.textContent = tasksCount.toString();
 }
 
 function completedTaskCounter(): void {
-  const completedTasks = document.querySelector("#completed")!;
+  const completedTasks = document.querySelector(
+    "#completed"
+  )! as HTMLSpanElement;
   completedTasks.textContent = tasksCompleted.toString();
 }
 
@@ -111,11 +113,17 @@ function makeTaskElement(taskInputValue: string, taskCount: number): void {
           dotMenu.classList.add("hidden");
         }, 200);
 
-        const completedTaskBtn = taskOptionList.querySelector("#completedBtn")!;
-        const removeTaskBtn = taskOptionList.querySelector("#removeBtn")!;
+        const completedTaskBtn = taskOptionList.querySelector(
+          "#completedBtn"
+        )! as HTMLButtonElement;
+        const removeTaskBtn = taskOptionList.querySelector(
+          "#removeBtn"
+        )! as HTMLButtonElement;
 
         completedTaskBtn.addEventListener("click", (): void => {
-          const taskItemName = taskItem.querySelector(".taskName")!;
+          const taskItemName = taskItem.querySelector(
+            ".taskName"
+          )! as HTMLParagraphElement;
           taskItem.classList.add("completedTask");
           taskItemName.classList.add("completed");
 
@@ -162,9 +170,11 @@ function makeTaskElement(taskInputValue: string, taskCount: number): void {
       // Hide All Option Menu
 
       for (let i: number = 0; i < taskList.children.length; i++) {
-        const task: Element = taskList.children[i];
-        const dotMenu: Element = task.querySelector(".dotMenu")!;
-        const taskOptionList: Element = task.querySelector(".taskOptionList")!;
+        const task = taskList.children[i] as HTMLLIElement;
+        const dotMenu = task.querySelector(".dotMenu")! as HTMLDivElement;
+        const taskOptionList = task.querySelector(
+          ".taskOptionList"
+        )! as HTMLDivElement;
 
         if (
           (dotMenu.classList.contains("hidden") ||
